@@ -89,3 +89,37 @@ WHERE id BETWEEN 1 AND 4
 SELECT * FROM Banco
 WHERE uf = 'MG'
 ORDER BY cliente
+
+
+
+
+
+
+CREATE TABLE clientes(
+    id INT PRIMARY KEY,
+    nome_cliente VARCHAR(100)
+);
+
+CREATE TABLE contas(
+    numero_conta INT PRIMARY KEY,
+    tipo_conta VARCHAR(1),
+    id_cliente INT,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id)
+);
+
+INSERT INTO clientes
+VALUES (2,'Carlos')
+
+INSERT INTO clientes
+VALUES (1,'Jão')
+
+INSERT INTO clientes
+VALUES (3,'Carla')
+        
+INSERT INTO clientes
+VALUES (4,'Carlos')
+        
+ SELECT * FROM clientes
+ 
+ 
+INSERT INTO contas (numero_conta, tipo_conta, id_cliente) VALUES (1234, 'C',4)
