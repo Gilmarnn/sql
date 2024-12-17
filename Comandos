@@ -1,0 +1,91 @@
+PRAGMA FOREIGN KEY = ON
+
+ALTER TABLE Banco 
+ADD CIDADE varchar (2), ESTADO_CIVIL varchar (2)
+
+ALTER TABLE banco
+ALTER COLUMN cidade VARCHAR(20)
+
+ALTER TABLE Banco
+ADD  Sexo varchar (2)
+
+
+INSERT INTO Banco
+
+VALUES(1, 'RJ','Rio de Janeiro','S','C', 'M')
+
+UPDATE Banco
+SET uf = 'SP', cidade = 'São Paulo' , estado_civil = 'S', sexo = 'M'
+WHERE id =1
+
+
+INSERT INTO Banco
+VALUES (2,'Carlos', 'CE','Ceará','S','M')
+
+INSERT INTO Banco
+VALUES (3,'Alex', 'CE','Ceará','S','M')
+
+INSERT INTO Banco
+VALUES (4,'Clara', 'CE','Ceará','S','M')
+
+INSERT INTO Banco
+VALUES (5,'João', 'CE','Ceará','S','M')
+
+UPDATE Banco
+SET uf = 'SP', cidade = 'São Paulo' , estado_civil = 'S'
+
+WHERE id=5
+
+UPDATE Banco
+SET uf = 'CE', cidade = 'Ceará' , estado_civil = 'S'
+
+WHERE id=2
+
+
+UPDATE Banco
+SET uf = 'PI', cidade = 'Piaui' , estado_civil = 'S'
+
+WHERE id=1
+
+UPDATE Banco
+SET  estado_civil = sexo
+
+SELECT * from  Banco
+
+DELETE from Banco 
+WHERE id=2
+
+CREATE TABLE conta(
+
+  numero_conta int PRIMARY KEY,
+  tipo_conta varchar (1)
+  
+);
+
+ALTER TABLE conta
+add FOREIGN KEY (id) References Banco(id)
+
+
+SELECT id,cliente,cidade from banco WHERE cidade = 'São paulo'
+
+SELECT id,cliente,uf,cidade from banco WHERE NOT cidade = 'São paulo' AND uf = 'SP'
+
+
+UPDATE Banco
+SET uf = 'MG'
+WHERE id =3
+
+UPDATE Banco
+SET uf = 'MG'
+WHERE id =4
+
+UPDATE Banco
+SET UF = 'MG'
+WHERE cidade LIKE '%Minas%' AND UF = 'MG';
+
+SELECT * FROM Banco
+WHERE id BETWEEN 1 AND 4
+
+SELECT * FROM Banco
+WHERE uf = 'MG'
+ORDER BY cliente
